@@ -1,0 +1,22 @@
+package com.lsdevlab.smart_accounting_master_data.exception;
+
+import com.lsdevlab.smart_accounting_master_data.dto.response.ErrorResponseDTO;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@Slf4j
+@ControllerAdvice
+@RequiredArgsConstructor
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(CustomerNotFoundException.class)
+    public ResponseEntity<ErrorResponseDTO> handleCustomerNotFound(CustomerNotFoundException ex) {
+        ErrorResponseDTO body = new ErrorResponseDTO(HttpStatus.NOT_FOUND.value(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
+    }
+
+}
