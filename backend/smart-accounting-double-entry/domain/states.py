@@ -1,0 +1,9 @@
+from enum import Enum
+
+class ProcessingState(Enum):
+    RECEIVED = "RECEIVED"
+    PARSED = "PARSED"
+    AI_ANALYZED = "AI_ANALYZED"
+    ANAGRAFICA_VERIFIED = "ANAGRAFICA_VERIFIED"
+    COMPLETED = "COMPLETED"
+    FAILED = "FAILED"
